@@ -35,3 +35,19 @@ Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
 Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
 
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+
+Route::get ('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+Route::post('/kategori', [KategoriController::class, 'store']);
+
+
+Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
+Route::put('/kategori/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+
+Route::delete('/kategori/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
+
