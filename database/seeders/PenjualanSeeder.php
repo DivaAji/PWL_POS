@@ -10,22 +10,80 @@ class PenjualanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $data = [
-            ['penjualan_id' => '1','user_id' => '3','pembeli' => 'Arya', 'penjualan_kode' => 'PNJLN001', 'penjualan_tanggal' => '2024-02-01 10:15:00'],
-            ['penjualan_id' => '2','user_id' => '3','pembeli' => 'Maya',  'penjualan_kode' => 'PNJLN002', 'penjualan_tanggal' => '2024-02-03 14:30:00'],
-            ['penjualan_id' => '3','user_id' => '3','pembeli' => 'Rama',  'penjualan_kode' => 'PNJLN003', 'penjualan_tanggal' => '2024-02-05 09:45:00'],
-            ['penjualan_id' => '4','user_id' => '3','pembeli' => 'Sinta',  'penjualan_kode' => 'PNJLN004', 'penjualan_tanggal' => '2024-02-07 12:20:00'],
-            ['penjualan_id' => '5','user_id' => '3','pembeli' => 'Adi',  'penjualan_kode' => 'PNJLN005', 'penjualan_tanggal' => '2024-02-09 16:00:00'],
-            ['penjualan_id' => '6','user_id' => '3','pembeli' => 'Dewi',  'penjualan_kode' => 'PNJLN006', 'penjualan_tanggal' => '2024-02-11 11:25:00'],
-            ['penjualan_id' => '7','user_id' => '3','pembeli' => 'Budi',  'penjualan_kode' => 'PNJLN007', 'penjualan_tanggal' => '2024-02-13 15:10:00'],
-            ['penjualan_id' => '8','user_id' => '3','pembeli' => 'Eka',  'penjualan_kode' => 'PNJLN008', 'penjualan_tanggal' => '2024-02-15 13:55:00'],
-            ['penjualan_id' => '9','user_id' => '3','pembeli' => 'Dian',  'penjualan_kode' => 'PNJLN009', 'penjualan_tanggal' => '2024-02-17 08:40:00'],
-            ['penjualan_id' => '10','user_id' => '3','pembeli' => 'Yoga',  'penjualan_kode' => 'PNJLN010', 'penjualan_tanggal' => '2024-02-19 17:30:00'],
+            [
+                "penjualan_id" => 1,
+                "user_id" => 1,
+                "pembeli" => "John Doe",
+                "penjualan_kode" => "PJ-0001",
+                "penjualan_tanggal" => "2024-02-28 08:00:00",
+            ],
+            [
+                "penjualan_id" => 2,
+                "user_id" => 2,
+                "pembeli" => "Jane Smith",
+                "penjualan_kode" => "PJ-0002",
+                "penjualan_tanggal" => "2024-02-28 09:00:00",
+            ],
+            [
+                "penjualan_id" => 3,
+                "user_id" => 3,
+                "pembeli" => "Alice Johnson",
+                "penjualan_kode" => "PJ-0003",
+                "penjualan_tanggal" => "2024-02-28 10:00:00",
+            ],
+            [
+                "penjualan_id" => 4,
+                "user_id" => 2,
+                "pembeli" => "Bob Williams",
+                "penjualan_kode" => "PJ-0004",
+                "penjualan_tanggal" => "2024-02-28 11:00:00",
+            ],
+            [
+                "penjualan_id" => 5,
+                "user_id" => 3,
+                "pembeli" => "Eve Brown",
+                "penjualan_kode" => "PJ-0005",
+                "penjualan_tanggal" => "2024-02-28 12:00:00",
+            ],
+            [
+                "penjualan_id" => 6,
+                "user_id" => 1,
+                "pembeli" => "Charlie Davis",
+                "penjualan_kode" => "PJ-0006",
+                "penjualan_tanggal" => "2024-02-28 13:00:00",
+            ],
+            [
+                "penjualan_id" => 7,
+                "user_id" => 2,
+                "pembeli" => "Grace Wilson",
+                "penjualan_kode" => "PJ-0007",
+                "penjualan_tanggal" => "2024-02-28 14:00:00",
+            ],
+            [
+                "penjualan_id" => 8,
+                "user_id" => 3,
+                "pembeli" => "David Miller",
+                "penjualan_kode" => "PJ-0008",
+                "penjualan_tanggal" => "2024-02-28 15:00:00",
+            ],
+            [
+                "penjualan_id" => 9,
+                "user_id" => 1,
+                "pembeli" => "Olivia Martinez",
+                "penjualan_kode" => "PJ-0009",
+                "penjualan_tanggal" => "2024-02-28 16:00:00",
+            ],
+            [
+                "penjualan_id" => 10,
+                "user_id" => 2,
+                "pembeli" => "James Lee",
+                "penjualan_kode" => "PJ-0010",
+                "penjualan_tanggal" => "2024-02-28 17:00:00",
+            ],
         ];
         DB::table('t_penjualan')->insert($data);
     }

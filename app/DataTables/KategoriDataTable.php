@@ -1,6 +1,7 @@
 <?php
 
 namespace App\DataTables;
+
 use App\Models\KategoriModel;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -21,12 +22,15 @@ class KategoriDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('edit', function ($kategori) {
-                return view('kategori.edit_button', ['kategori_id' => $kategori->kategori_id]);
+            ->addColumn('actions', function ($kategori) {
+                return '<a href="' . route('/kategori/update', ['id' => $kategori->kategori_id]) . '" class="btn btn-primary mr-2">
+                    <i class="fa fa-pencil-alt" style="color: white; font-size: 12px;"></i>
+                    </a>' .
+                    '<a href="' . route('/kategori/delete', ['id' => $kategori->kategori_id]) . '" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete?\')">
+                    <i class="fa fa-trash" style="color: white; font-size: 12px;"></i>
+                    </a>';
             })
-            ->addColumn('delete', function ($kategori) {
-                return view('kategori.delete_button', ['kategori_id' => $kategori->kategori_id]);
-            })
+            ->rawColumns(['actions'])
             ->setRowId('id');
     }
 
@@ -44,46 +48,37 @@ class KategoriDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('kategori-table')
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            //->dom('Bfrtip')
-            ->orderBy(1)
-            ->selectStyleSingle()
-            ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            ]);
+                    ->setTableId('kategori-table')
+                    ->columns($this->getColumns())
+                    ->minifiedAjax()
+                    //->dom('Bfrtip')
+                    ->orderBy(0, 'desc')
+                    ->buttons([
+                        Button::make('excel'),
+                        Button::make('csv'),
+                        Button::make('pdf'),
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
+                    ]);
     }
+
     /**
      * Get the dataTable columns definition.
      */
     public function getColumns(): array
     {
         return [
-            /* Column::computed('action')
+            Column::make('kategori_id')->width('15%'), 
+            Column::make('kategori_kode')->width('15%'), 
+            Column::make('kategori_nama')->width('20%'), 
+            Column::make('created_at')->width('10%'), 
+            Column::make('updated_at')->width('10%'), 
+            Column::computed('actions')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
-                ->addClass('text-center'), */
-            Column::make('kategori_id'),
-            Column::make('kategori_kode'),
-            Column::make('kategori_nama'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
-            Column::computed('edit')
-            ->width(60)
-            ->addClass('text-center')
-            ->title('Edit')
-            ->view('kategori.edit_button'),
-            Column::computed('delete')
-            ->width(60)
-            ->addClass('text-center')
-            ->title('Delete'),
+                ->width(20) 
+                ->addClass('text-center'),
         ];
     }
 

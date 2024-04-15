@@ -8,10 +8,6 @@
         <a href="user/tambah">+ Tambah User</a>
         <table border="1" cellpading="2" cellspacing="0">
             <tr>
-                <td>ID</td>
-                <td>Username</td>
-                <td>Nama</td>
-                <td>ID Level Pengguna</td>
                 <td>Kode Level</td>
                 <td>Nama Level</td>
                 <td>Aksi</td>
@@ -27,7 +23,7 @@
                 <td> <a href="user/ubah/{{ $d->user_id }}">Ubah</a> | <a href="user/hapus/{{ $d->user_id }}">Hapus</a>
                 </td>
             </tr>
-            @endforeach
+            @endforeach  
         </table>
     </body>
 </html>
