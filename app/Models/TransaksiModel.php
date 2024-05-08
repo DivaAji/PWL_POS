@@ -2,12 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class TransaksiModel extends Model
 {
-    use HasFactory;
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
     // table name, primary key, and other property related to database
     protected $table = 't_penjualan';
     protected $primaryKey = 'penjualan_id';
@@ -18,7 +28,8 @@ class TransaksiModel extends Model
         'user_id',
         'pembeli',
         'penjualan_kode',
-        'penjualan_tanggal'
+        'penjualan_tanggal',
+        'image',
     ];
 
     // relationship with user
@@ -31,6 +42,13 @@ class TransaksiModel extends Model
     public function detail_penjualan()
     {
         return $this->hasMany(TransaksiDetailModel::class, 'penjualan_id', 'penjualan_id');
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
     }
 
 

@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\BarangController;
-
+use App\Http\Controllers\Api\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -50,3 +50,12 @@ Route::post('users', [UserController::class, 'store']);
 Route::get('users/{user}', [UserController::class, 'show']);
 Route::put('users/{user}', [UserController::class, 'update']);
 Route::delete('users/{user}', [UserController::class, 'destroy']);
+
+Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
+Route::get('/register1/{id}', [App\Http\Controllers\Api\RegisterController::class, 'show'])->name('register1');
+
+Route::post('/barang', App\Http\Controllers\Api\BarangController::class)->name('barang');
+Route::get('/barang/{id}', [App\Http\Controllers\Api\BarangController::class, 'show'])->name('barang');
+
+Route::post('/transaksi', App\Http\Controllers\Api\TransaksiController::class)->name('transaksi');
+Route::get('/transaksi/{id}', [App\Http\Controllers\Api\TransaksiController::class, 'show'])->name('transaksi');
